@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASOGA'S LEGACY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #c19a6b;
+        }
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .heading-font { font-family: 'Playfair Display', serif; }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(59, 42, 31, 0.75), rgba(59, 42, 31, 0.85)), 
+                             url('https://picsum.photos/id/1015/2000/1200');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .member-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .member-card:hover {
+            transform: translateY(-15px) scale(1.04);
+            box-shadow: 0 30px 60px -15px rgb(0 0 0 / 0.3);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after { width: 100%; }
+
+        .modal {
+            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes modalPop {
+            from { opacity: 0; transform: scale(0.7) translateY(50px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 dark:bg-stone-950 dark:text-stone-200">
+
+    <!-- Navbar -->
+    <nav class="bg-white dark:bg-stone-900 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div onclick="window.scrollTo({top:0,behavior:'smooth'})" 
+                     class="w-12 h-12 bg-gradient-to-br from-amber-800 to-amber-950 rounded-2xl flex items-center justify-center text-white text-3xl font-bold cursor-pointer">BL</div>
+                <div>
+                    <h1 class="heading-font text-3xl font-bold tracking-tight">BASOGA'S LEGACY</h1>
+                    <p class="text-xs text-amber-700 dark:text-amber-400">Tapenesi Basoga's Eternal Family</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#home" class="nav-link cursor-pointer">Home</a>
+                <a href="#mother" class="nav-link cursor-pointer">Mother</a>
+                <a href="#children" class="nav-link cursor-pointer">Children</a>
+                <a href="#grandchildren" class="nav-link cursor-pointer">Grandchildren</a>
+                <a href="#tree" class="nav-link cursor-pointer">Family Tree</a>
+                <a href="#gallery" class="nav-link cursor-pointer">Gallery</a>
+                <a href="#stories" class="nav-link cursor-pointer">Stories</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button onclick="toggleDarkMode()" class="w-10 h-10 flex items-center justify-center text-xl rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-3xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white dark:bg-stone-900 z-50 pt-20 px-6">
+        <div class="flex flex-col gap-6 text-xl font-medium">
+            <a href="#home" onclick="toggleMobileMenu()" class="py-3 border-b">Home</a>
+            <a href="#mother" onclick="toggleMobileMenu()" class="py-3 border-b">Our Mother</a>
+            <a href="#children" onclick="toggleMobileMenu()" class="py-3 border-b">Children</a>
+            <a href="#grandchildren" onclick="toggleMobileMenu()" class="py-3 border-b">Grandchildren</a>
+            <a href="#tree" onclick="toggleMobileMenu()" class="py-3 border-b">Family Tree</a>
+            <a href="#gallery" onclick="toggleMobileMenu()" class="py-3 border-b">Gallery</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section id="home" class="hero-bg h-screen flex items-center text-white">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-6 py-2 rounded-full mb-6">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                </span>
+                Living Legacy
+            </div>
+            <h1 class="heading-font text-6xl md:text-8xl font-bold tracking-tighter leading-none mb-6">BASOGA'S LEGACY</h1>
+            <p class="text-2xl md:text-3xl max-w-2xl mx-auto">A celebration of love, strength, and the enduring bond of family across generations.</p>
+            
+            <div class="mt-12 flex flex-wrap gap-4 justify-center">
+                <a href="#children" onclick="navigateTo('children')" 
+                   class="px-10 py-5 bg-amber-800 hover:bg-amber-900 rounded-2xl font-semibold text-lg transition">Meet the Family</a>
+                <a href="#tree" onclick="navigateTo('tree')" 
+                   class="px-10 py-5 border-2 border-white hover:bg-white hover:text-stone-900 rounded-2xl font-semibold text-lg transition">View Family Tree</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mother Tribute -->
+    <section id="mother" class="py-24 bg-white dark:bg-stone-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-5">
+                    <div class="rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="https://picsum.photos/id/64/800/800" alt="Tapenesi Basoga" class="w-full">
+                    </div>
+                </div>
+                <div class="md:col-span-7">
+                    <span class="uppercase tracking-widest text-amber-700 dark:text-amber-400 text-sm font-medium">In Loving Memory</span>
+                    <h2 class="heading-font text-6xl font-bold mt-4 mb-8">Tapenesi Basoga</h2>
+                    <p class="text-xl text-stone-600 dark:text-stone-300 leading-relaxed">The heart of our family. Her wisdom, grace, and unconditional love continue to guide every generation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Children -->
+    <section id="children" class="py-24 bg-stone-100 dark:bg-stone-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-5xl font-bold">Children of Tapenesi Basoga</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="children-grid"></div>
+        </div>
+    </section>
+
+    <!-- Grandchildren -->
+    <section id="grandchildren" class="py-24 bg-white dark:bg-stone-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-5xl font-bold">Grandchildren</h2>
+                <p class="text-stone-600 dark:text-stone-400 mt-4">The beautiful continuation of our legacy</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="grandchildren-grid"></div>
+        </div>
+    </section>
+
+    <!-- Interactive Family Tree -->
+    <section id="tree" class="py-24 bg-stone-100 dark:bg-stone-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="heading-font text-5xl font-bold">Our Family Tree</h2>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-3xl p-10 shadow-inner text-center">
+                <div class="max-w-md mx-auto">
+                    <div class="text-amber-800 dark:text-amber-400 text-2xl mb-8">🌳 Tapenesi Basoga</div>
+                    <div class="grid grid-cols-2 gap-8 text-sm">
+                        <div class="space-y-6">
+                            <div class="font-medium">Children</div>
+                            <div class="text-left space-y-2 text-amber-700 dark:text-amber-300">
+                                <div>Mugonyi Edrine Dickson</div>
+                                <div>Kisira Habert</div>
+                                <div>Namuhanga Juliet</div>
+                                <!-- more can be added -->
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="font-medium">Grandchildren</div>
+                            <div class="text-left space-y-2 text-stone-500">Coming soon with your photos...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="py-24 bg-white dark:bg-stone-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="heading-font text-5xl font-bold text-center mb-12">Family Memories</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="gallery-grid">
+                <!-- JS populated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Family Stories -->
+    <section id="stories" class="py-24 bg-stone-100 dark:bg-stone-950">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="heading-font text-5xl font-bold text-center mb-16">Family Stories</h2>
+            <div class="space-y-12">
+                <div class="bg-white dark:bg-stone-900 p-8 rounded-3xl">
+                    <p class="italic">"Her love was the glue that held us together. Even today, we feel her presence in every gathering."</p>
+                    <p class="mt-6 text-amber-700 dark:text-amber-400 font-medium">- A Child of Tapenesi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-white py-20">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center mb-8">
+                <div class="w-16 h-16 bg-amber-700 rounded-3xl flex items-center justify-center text-4xl">BL</div>
+            </div>
+            <p class="text-2xl heading-font">BASOGA'S LEGACY</p>
+            <p class="text-stone-400 mt-2">© 2026 • Built with love and pride</p>
+            
+            <div class="mt-12 flex justify-center gap-8 text-3xl">
+                <a href="#" class="hover:text-amber-400"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="hover:text-amber-400"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="hover:text-amber-400"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Profile Modal -->
+    <div id="profile-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[100] p-4">
+        <div class="modal bg-white dark:bg-stone-900 rounded-3xl max-w-lg w-full overflow-hidden">
+            <div class="relative">
+                <button onclick="closeModal()" class="absolute top-6 right-6 text-5xl text-white z-10 hover:text-amber-300">×</button>
+                <div id="modal-image" class="h-80"></div>
+            </div>
+            <div class="p-8">
+                <h3 id="modal-name" class="heading-font text-4xl font-bold"></h3>
+                <p id="modal-role" class="text-amber-700 dark:text-amber-400"></p>
+                <div id="modal-bio" class="mt-6 text-stone-600 dark:text-stone-300"></div>
+                
+                <div class="mt-10 flex gap-4">
+                    <button onclick="closeModal()" class="flex-1 py-4 border border-stone-300 dark:border-stone-700 rounded-2xl">Close</button>
+                    <button onclick="alert('Family messaging coming soon!')" class="flex-1 py-4 bg-amber-800 text-white rounded-2xl">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Family Data
+        const childrenData = [
+            { name: "Kisira Habert", role: "Son", photo: "https://picsum.photos/id/64/600/600", bio: "The eldest son — a strong pillar of the family." },
+            { name: "Namuhanga Juliet", role: "Daughter", photo: "https://picsum.photos/id/1027/600/600", bio: "Caring and wise, always uniting the family." },
+            { name: "Walusansa Susan", role: "Daughter", photo: "https://picsum.photos/id/201/600/600", bio: "Loving and dedicated mother." },
+            { name: "Namganda Lydia", role: "Daughter", photo: "https://picsum.photos/id/251/600/600", bio: "Full of life and creativity." },
+            { name: "Namatende Helen", role: "Daughter", photo: "https://picsum.photos/id/64/600/600", bio: "Graceful and supportive." },
+            { name: "Wambuzi Benard", role: "Son", photo: "https://picsum.photos/id/133/600/600", bio: "Hardworking and dependable." },
+            { name: "Naisamula Miria", role: "Daughter", photo: "https://picsum.photos/id/1027/600/600", bio: "Brings joy to everyone." },
+            { name: "Nakisige Brenda", role: "Daughter", photo: "https://picsum.photos/id/201/600/600", bio: "Strong and independent." },
+            { name: "Basoga Andrew", role: "Son", photo: "https://picsum.photos/id/251/600/600", bio: "Proud bearer of the family name." },
+            { 
+                name: "Mugonyi Edrine Dickson", 
+                role: "Son", 
+                photo: "photos/Edrine.jpeg", 
+                bio: "Warm-hearted and always smiling. Deeply committed to family unity." 
+            },
+            { name: "Namuyonjo Abel", role: "Son", photo: "https://picsum.photos/id/133/600/600", bio: "Thoughtful and kind-hearted." },
+            { name: "Kanene Grace", role: "Son", photo: "https://picsum.photos/id/1027/600/600", bio: "The youngest, full of grace." }
+        ];
+
+        const grandchildrenData = [
+            { name: "Grandchild 1", role: "Grandchild", photo: "https://picsum.photos/id/201/600/600", bio: "Shining star of the next generation." },
+            { name: "Grandchild 2", role: "Grandchild", photo: "https://picsum.photos/id/251/600/600", bio: "Bringing new joy to the family." }
+        ];
+
+        function renderCards(containerId, data, isChild = true) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            data.forEach((member, i) => {
+                const card = document.createElement('div');
+                card.className = `member-card bg-white dark:bg-stone-900 rounded-3xl overflow-hidden shadow-xl cursor-pointer`;
+                card.innerHTML = `
+                    <div class="h-72 overflow-hidden">
+                        <img src="${member.photo}" alt=" ${member.name}" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                    </div>
+                    <div class="p-7">
+                        <h3 class="font-semibold text-2xl">${member.name}</h3>
+                        <p class="text-amber-700 dark:text-amber-400">${member.role}</p>
+                        <button onclick="showProfile(${i}, ${isChild})" 
+                                class="mt-6 w-full py-3.5 border border-stone-300 dark:border-stone-700 hover:border-amber-600 rounded-2xl text-sm font-medium">
+                            View Profile
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function showProfile(index, isChild) {
+            const data = isChild ? childrenData : grandchildrenData;
+            const member = data[index];
+            const modal = document.getElementById('profile-modal');
+            
+            document.getElementById('modal-image').innerHTML = `<img src="${member.photo}" class="w-full h-full object-cover">`;
+            document.getElementById('modal-name').textContent = member.name;
+            document.getElementById('modal-role').textContent = member.role;
+            document.getElementById('modal-bio').innerHTML = `<p class="text-lg">${member.bio}</p>`;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('profile-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function navigateTo(section) {
+            document.getElementById(section).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('theme-icon');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        }
+
+        // Initialize
+        window.onload = () => {
+            renderCards('children-grid', childrenData, true);
+            renderCards('grandchildren-grid', grandchildrenData, false);
+            
+            // Simple gallery
+            const galleryHTML = `
+                <img src="https://picsum.photos/id/1015/600/600" class="rounded-3xl shadow hover:scale-105 transition cursor-pointer" onclick="alert('Photo enlarged!')">
+                <img src="https://picsum.photos/id/133/600/600" class="rounded-3xl shadow hover:scale-105 transition cursor-pointer" onclick="alert('Photo enlarged!')">
+                <img src="https://picsum.photos/id/201/600/600" class="rounded-3xl shadow hover:scale-105 transition cursor-pointer" onclick="alert('Photo enlarged!')">
+            `;
+            document.getElementById('gallery-grid').innerHTML = galleryHTML;
+        };
+    </script>
+</body>
+</html>
